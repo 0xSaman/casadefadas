@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa de Fadas &amp; Spa de Fadas</title>
+<meta name="description" content="Casa sustentável de experiências de arte, consciência e bioconstrução. Aqui funciona o Spa de Fadas: massagens, sauna, banho de gelo e banhos de ervas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@300;400;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbf8f3; --paper2:#f4efe6; --mist:#e9f0ec; --blush:#f4dcd8; --rose:#c98a85;
+  --leaf:#2f5a43; --forest:#1d3328; --gold:#b0905a; --gold-soft:#e6d6b4;
+  --ink:#1f2a23; --ink2:#4b5750; --ink3:#86908a;
+  --line:rgba(31,42,35,.12); --line2:rgba(31,42,35,.06);
+  --r-lg:28px; --r:14px; --nav:68px;
+  --serif:'Cormorant Garamond',Georgia,serif; --caps:'Josefin Sans',sans-serif; --sans:'DM Sans',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+em{font-style:italic}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--caps);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"✳";font-size:11px;letter-spacing:0}
+.h2{font-family:var(--serif);font-weight:300;font-size:clamp(38px,5.2vw,64px);line-height:1.04;letter-spacing:-.01em;margin:18px 0 20px}
+.h2 em{color:var(--leaf)}
+.lead{font-size:17px;color:var(--ink2);max-width:560px}
+.sec{padding:120px 0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:999px;padding:15px 26px;font-family:var(--caps);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:transform .2s,background .2s,color .2s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-dark{background:var(--forest);color:var(--paper)}
+.btn-dark:hover{background:var(--leaf);box-shadow:0 10px 24px -10px rgba(29,51,40,.6)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-light{background:var(--paper);color:var(--forest)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn .ar{transition:transform .2s}.btn:hover .ar{transform:translateX(3px)}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;height:var(--nav);z-index:50;display:flex;align-items:center;transition:background .3s,box-shadow .3s}
+nav.solid{background:rgba(251,248,243,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%}
+.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none;font-family:var(--serif);font-size:22px;letter-spacing:.01em}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.brand em{color:var(--rose)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{text-decoration:none;font-family:var(--caps);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);padding:6px 0;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-r{display:flex;align-items:center;gap:18px}
+.lang{display:flex;gap:2px;font-family:var(--caps);font-size:11.5px;letter-spacing:.14em}
+.lang button{background:none;border:none;color:var(--ink3);padding:6px 6px}
+.lang button.on{color:var(--ink);font-weight:600}
+.nav-r .btn{padding:11px 20px}
+.burger{display:none;background:none;border:none;width:40px;height:40px;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:1.5px;background:var(--ink);transition:.25s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:23px}
+body.menu .burger span:nth-child(1){top:19px;transform:rotate(45deg)}
+body.menu .burger span:nth-child(2){top:19px;transform:rotate(-45deg)}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;padding:calc(var(--nav) + 40px) 0 80px;display:flex;align-items:center;overflow:hidden;
+  background:radial-gradient(1200px 600px at 85% 20%,var(--mist),transparent 60%),radial-gradient(700px 500px at 5% 100%,#f8e9e5,transparent 60%),var(--paper)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(64px,10vw,140px);line-height:.92;letter-spacing:-.02em;margin:26px 0 28px}
+.hero h1 em{color:var(--leaf);display:block;padding-left:.6em}
+.hero .lead{font-size:18.5px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero-note{margin-top:22px;font-size:13.5px;color:var(--ink3);display:flex;align-items:center;gap:8px}
+.hero-note .dot{width:7px;height:7px;border-radius:50%;background:#5aa36f;box-shadow:0 0 0 4px rgba(90,163,111,.18)}
+.hero-art{position:relative;justify-self:center;width:min(460px,100%)}
+.arch{aspect-ratio:4/5.2;border-radius:999px 999px var(--r-lg) var(--r-lg);overflow:hidden;background:var(--mist);box-shadow:0 40px 80px -40px rgba(29,51,40,.45)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;left:-46px;bottom:56px;width:150px;height:150px;border-radius:50%;background:#fff;padding:6px;box-shadow:0 20px 40px -18px rgba(29,51,40,.35);animation:float 7s ease-in-out infinite}
+.badge img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.loop{position:absolute;inset:-60px -80px auto auto;width:420px;pointer-events:none;opacity:.9}
+.loop path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s .3s ease forwards}
+.spark{position:absolute;color:var(--gold);font-size:18px;animation:twinkle 3s ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes twinkle{50%{opacity:.25;transform:scale(.8)}}
+.scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-family:var(--caps);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink3);text-decoration:none}
+
+/* DUO */
+.duo-head{text-align:center;max-width:640px;margin:0 auto 56px}
+.duo-head .eyebrow{justify-content:center}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.duo-card{position:relative;border-radius:var(--r-lg);padding:44px 44px 40px;text-decoration:none;display:flex;flex-direction:column;gap:18px;overflow:hidden;transition:transform .35s,box-shadow .35s;min-height:440px}
+.duo-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(29,51,40,.5)}
+.duo-card.casa{background:linear-gradient(160deg,#fff 0%,#fbefec 100%)}
+.duo-card.spa{background:linear-gradient(160deg,#fff 0%,var(--mist) 100%)}
+.duo-logo{width:150px;height:150px;mix-blend-mode:multiply;object-fit:cover}
+.duo-card h3{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1}
+.duo-card.casa h3 em{color:var(--rose)}.duo-card.spa h3 em{color:var(--gold)}
+.duo-card p{color:var(--ink2);max-width:420px}
+.duo-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:22px;border-top:1px solid var(--line)}
+.handle{font-size:14px;color:var(--ink3)}
+.duo-go{font-family:var(--caps);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+
+/* SPA */
+.spa{background:var(--paper2)}
+.sec-head{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;margin-bottom:56px}
+.sec-head .side{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.from{font-family:var(--serif);font-size:22px;color:var(--ink2)}.from strong{font-weight:500;color:var(--ink)}
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+.svc{grid-column:span 2;background:var(--paper);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.svc:nth-child(1),.svc:nth-child(2){grid-column:span 3}
+.svc:hover{transform:translateY(-4px);box-shadow:0 26px 50px -34px rgba(29,51,40,.55)}
+.svc-img{aspect-ratio:16/10;overflow:hidden;background:var(--mist)}
+.svc:nth-child(1) .svc-img,.svc:nth-child(2) .svc-img{aspect-ratio:16/9}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-body{padding:26px 26px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.svc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.svc h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.05}
+.price{font-family:var(--serif);font-size:22px;white-space:nowrap}
+.meta{font-family:var(--caps);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.svc p{color:var(--ink2);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;padding:4px 11px;border-radius:999px;background:var(--mist);color:var(--leaf)}
+.svc .btn{margin-top:auto;align-self:flex-start;padding:12px 20px}
+
+/* SPA DAY */
+.day{margin-top:90px;background:var(--forest);color:var(--paper);border-radius:36px;padding:72px 64px;position:relative;overflow:hidden}
+.day::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(230,214,180,.25)}
+.day .eyebrow{color:var(--gold-soft)}
+.day .h2 em{color:var(--gold-soft)}
+.day .lead{color:rgba(251,248,243,.75)}
+.day-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center;position:relative;z-index:1}
+.ritual{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0;counter-reset:r}
+.ritual li:nth-child(n+3){border-top:1px solid rgba(230,214,180,.22)}
+.ritual li{counter-increment:r;padding:26px 24px 24px;border-left:1px solid rgba(230,214,180,.22);display:flex;flex-direction:column;gap:6px}
+.ritual li::before{content:"0" counter(r);font-family:var(--caps);font-size:12px;letter-spacing:.2em;color:var(--gold)}
+.ritual b{font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.1}
+.ritual span{font-size:13.5px;color:rgba(251,248,243,.6)}
+.day .btn{margin-top:34px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.mini-card{border-radius:var(--r-lg);padding:36px 38px;background:var(--paper);display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.mini-card h4{font-family:var(--serif);font-weight:400;font-size:30px}
+.mini-card p{color:var(--ink2);font-size:15px;max-width:440px}
+.txt-link{font-family:var(--caps);font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;margin-top:6px;background:none;border-top:0;border-left:0;border-right:0;color:var(--ink)}
+
+/* CASA */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:96px}
+.pillar{padding:34px 28px 34px 0;display:flex;flex-direction:column;gap:12px}
+.pillar+.pillar{padding-left:28px;border-left:1px solid var(--line)}
+.pillar svg{width:34px;height:34px;stroke:var(--leaf);fill:none;stroke-width:1.2}
+.pillar h4{font-family:var(--serif);font-weight:400;font-size:26px}
+.pillar p{font-size:14.5px;color:var(--ink2)}
+.stays-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
+.stays-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4vw,48px);line-height:1}
+.stays-head p{color:var(--ink2);margin-top:10px}
+.arrows{display:flex;gap:8px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;font-size:18px;color:var(--ink);transition:.2s}
+.arrows button:hover{background:var(--ink);color:var(--paper)}
+.stays{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,1fr);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+.stays::-webkit-scrollbar{display:none}
+.stay{scroll-snap-align:start;display:flex;flex-direction:column;gap:16px}
+.stay-img{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;position:relative;background:var(--mist)}
+.stay-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.stay:hover .stay-img img{transform:scale(1.04)}
+.stay-price{position:absolute;left:14px;bottom:14px;background:rgba(251,248,243,.94);backdrop-filter:blur(6px);padding:8px 14px;border-radius:999px;font-size:14px}
+.stay-price b{font-family:var(--serif);font-size:19px;font-weight:500}
+.stay h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1}
+.stay .tags .tag{background:#f6e6e3;color:#8c5652}
+.stay .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+
+.retreat{margin-top:110px;display:grid;grid-template-columns:1fr 1fr;border-radius:36px;overflow:hidden;background:var(--blush)}
+.retreat-img{min-height:460px;background:var(--mist)}
+.retreat-img img{width:100%;height:100%;object-fit:cover}
+.retreat-body{padding:64px 60px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:4px}
+.retreat .h2 em{color:#8c5652}
+.retreat .btn{margin-top:28px}
+
+.community{margin-top:22px;border-radius:var(--r-lg);border:1px dashed rgba(31,42,35,.25);padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.community h4{font-family:var(--serif);font-weight:400;font-size:28px}
+.community p{color:var(--ink2);font-size:15px}
+
+/* IG */
+.ig{padding:90px 0;text-align:center;background:linear-gradient(180deg,var(--paper),var(--mist))}
+.ig .eyebrow{justify-content:center}
+.ig-row{display:flex;justify-content:center;gap:22px;margin-top:30px;flex-wrap:wrap}
+.ig-card{display:flex;align-items:center;gap:16px;padding:14px 26px 14px 14px;background:#fff;border-radius:999px;text-decoration:none;box-shadow:0 12px 30px -20px rgba(29,51,40,.5);transition:transform .25s}
+.ig-card:hover{transform:translateY(-3px)}
+.ig-card img{width:58px;height:58px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--rose)}
+.ig-card b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;text-align:left}
+.ig-card span{font-size:13.5px;color:var(--ink3)}
+
+/* VISIT */
+.visit{padding:110px 0}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.contact-list{list-style:none;display:flex;flex-direction:column}
+.contact-list a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .25s}
+.contact-list li:first-child a{border-top:1px solid var(--line)}
+.contact-list a:hover{padding-left:10px}
+.contact-list b{font-family:var(--serif);font-weight:400;font-size:26px;display:block}
+.contact-list small{font-size:14px;color:var(--ink3)}
+.contact-list .ar{font-size:20px;color:var(--gold)}
+
+footer{background:var(--forest);color:rgba(251,248,243,.7);padding:48px 0;font-size:14px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot .brand{color:var(--paper)}
+
+
+/* floating WA */
+.wa-fab{position:fixed;right:22px;bottom:22px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(0,0,0,.4);transition:transform .2s}
+.wa-fab:hover{transform:scale(1.07)}
+.wa-fab svg{width:30px;height:30px;fill:#fff}
+
+.svc-img,.stay-img,.arch,.retreat-img{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none' stroke='%232f5a43' stroke-opacity='.22' stroke-width='1.4'%3E%3Cpath d='M60 104V54M60 54c0-22-14-36-36-38 2 22 16 36 36 38zM60 66c2-20 18-32 38-32-2 20-18 32-38 32z'/%3E%3C/svg%3E") center/72px no-repeat,linear-gradient(160deg,#eef4f0,#f6e7e3)}
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+
+/* BOOKING DRAWER */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(29,51,40,.35);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
+.ov.open{opacity:1;pointer-events:auto}
+.drawer{position:absolute;right:0;top:0;bottom:0;width:min(520px,100%);background:var(--paper);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);box-shadow:-30px 0 60px -30px rgba(0,0,0,.3)}
+.ov.open .drawer{transform:none}
+.dr-head{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;border-bottom:1px solid var(--line)}
+.dr-title{font-family:var(--serif);font-size:26px}
+.dr-x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;font-size:15px}
+.dr-body{flex:1;overflow-y:auto;padding:26px 28px 32px}
+.steps{display:flex;gap:6px;margin-bottom:26px}
+.steps i{flex:1;height:3px;border-radius:3px;background:var(--line)}
+.steps i.on{background:var(--gold)}
+.st-lbl{font-family:var(--caps);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.st-title{font-family:var(--serif);font-weight:300;font-size:34px;line-height:1.05;margin-bottom:22px}
+.st-title em{color:var(--leaf)}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;padding:10px 16px 10px 10px;border-radius:var(--r);background:#fff;border:1.5px solid transparent;box-shadow:0 0 0 1px var(--line2);text-align:left;width:100%;transition:.2s}
+.opt:hover{box-shadow:0 0 0 1px var(--line)}
+.opt.sel{border-color:var(--leaf);background:#f6faf7}
+.opt img{width:58px;height:58px;border-radius:10px;object-fit:cover;background:var(--mist);flex:none}
+.opt-b{flex:1;min-width:0}
+.opt-n{font-family:var(--serif);font-size:21px;line-height:1.1}
+.opt-d{font-size:13px;color:var(--ink3)}
+.opt-p{font-family:var(--serif);font-size:19px;text-align:right;white-space:nowrap}
+.opt-p small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--ink3)}
+.cal{background:#fff;border-radius:var(--r);padding:16px;box-shadow:0 0 0 1px var(--line2);margin-bottom:18px}
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-nav span{font-family:var(--serif);font-size:20px}
+.cal-nav button{width:32px;height:32px;border-radius:50%;border:none;background:var(--paper2);font-size:16px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
+.cal-h{font-size:11px;color:var(--ink3);font-family:var(--caps);letter-spacing:.1em;padding:4px 0}
+.cd{aspect-ratio:1;display:grid;place-items:center;border-radius:50%;font-size:14px;border:none;background:none;color:var(--ink)}
+.cd:not(:disabled):hover{background:var(--mist)}
+.cd:disabled{color:#c9cdca;cursor:default}
+.cd.today{box-shadow:inset 0 0 0 1px var(--gold)}
+.cd.sel{background:var(--forest);color:#fff}
+.cd.rng{background:var(--mist);border-radius:6px}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tb{padding:10px 0;border-radius:10px;border:none;background:#fff;box-shadow:0 0 0 1px var(--line2);font-size:14px}
+.tb:not(:disabled):hover{box-shadow:0 0 0 1px var(--leaf)}
+.tb.sel{background:var(--forest);color:#fff}
+.tb:disabled{color:#c9cdca;text-decoration:line-through;cursor:default}
+.hint{font-size:13px;color:var(--ink3);margin:-6px 0 14px}
+.guest{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line2)}
+.guest small{display:block;font-size:12.5px;color:var(--ink3)}
+.gc{display:flex;align-items:center;gap:14px}
+.gc button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:17px}
+.gc b{min-width:16px;text-align:center;font-weight:500}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fg label{font-family:var(--caps);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.fg input,.fg textarea{font:inherit;font-size:15px;padding:13px 15px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);outline:none;transition:border .2s}
+.fg input:focus,.fg textarea:focus{border-color:var(--leaf)}
+.fg textarea{min-height:84px;resize:vertical}
+.sum{background:#fff;border-radius:var(--r);padding:8px 18px;box-shadow:0 0 0 1px var(--line2)}
+.sum div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line2);font-size:14.5px}
+.sum div:last-child{border-bottom:none}
+.sum span{color:var(--ink3)}
+.sum .tot b{font-family:var(--serif);font-size:24px;font-weight:500}
+.note{font-size:12.5px;color:var(--ink3);margin-top:10px}
+.dr-foot{display:flex;justify-content:space-between;gap:10px;padding:18px 28px;border-top:1px solid var(--line);background:var(--paper)}
+.dr-foot .btn{padding:13px 22px}
+.btn:disabled{opacity:.35;transform:none;cursor:not-allowed}
+.ok{text-align:center;padding:30px 0}
+.ok .glyph{width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-size:34px;color:var(--leaf)}
+.ok p{color:var(--ink2);margin:10px auto 24px;max-width:360px}
+
+/* RESPONSIVE */
+@media (max-width:1020px){
+  .nav-links{gap:20px}
+  .svc,.svc:nth-child(1),.svc:nth-child(2){grid-column:span 3}
+  .day-grid{grid-template-columns:1fr;gap:30px}
+}
+@media (max-width:880px){
+  :root{--nav:62px}
+  .nav-links,.nav-r .btn{display:none}
+  .burger{display:block}
+  body.menu .nav-links{display:flex;position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;gap:0;background:var(--paper);padding:10px 28px 26px;box-shadow:0 20px 30px -20px rgba(0,0,0,.2)}
+  body.menu .nav-links a{display:block;padding:16px 0;border-bottom:1px solid var(--line2);font-size:13px}
+  body.menu nav{background:var(--paper)}
+  .hero{min-height:auto;padding-top:calc(var(--nav) + 30px)}
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero-art{width:min(360px,86%)}
+  .badge{left:-24px;width:112px;height:112px;bottom:36px}
+  .loop{width:300px;right:-60px}
+  .scroll-cue{display:none}
+  .duo,.sec-head,.mini,.retreat,.visit-grid{grid-template-columns:1fr}
+  .sec-head{gap:24px}
+  .duo-card{min-height:0;padding:34px 28px}
+  .pillars{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(3){padding-left:0;border-left:none}
+  .pillar:nth-child(n+3){border-top:1px solid var(--line)}
+  .retreat-img{min-height:280px}
+  .retreat-body{padding:40px 30px}
+  .community{flex-direction:column;align-items:flex-start}
+  .sec{padding:84px 0}
+}
+@media (max-width:620px){
+  .wrap{padding:0 20px}
+  .brand{font-size:19px;gap:8px}.brand img{width:34px;height:34px}
+  .nav-r{gap:6px}.lang button{padding:6px 4px}
+  .svc,.svc:nth-child(1),.svc:nth-child(2){grid-column:span 6}
+  .day{padding:46px 26px;border-radius:28px}
+  .pillars{grid-template-columns:1fr}
+  .pillar,.pillar+.pillar{padding:26px 0;border-left:none}
+  .pillar+.pillar{border-top:1px solid var(--line)}
+  .stays{grid-auto-columns:82%}
+  .arrows{display:none}
+  .times{grid-template-columns:repeat(3,1fr)}
+  .dr-body,.dr-head,.dr-foot{padding-left:20px;padding-right:20px}
+  .hero-ctas .btn{flex:1;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.loop path{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><img src="images/logo_casa.jpg" alt="">Casa de <em>Fadas</em></a>
+    <ul class="nav-links" id="links">
+      <li><a href="#casa" data-t="navCasa"></a></li>
+      <li><a href="#spa" data-t="navSpa"></a></li>
+      <li><a href="#spaday" data-t="navDay"></a></li>
+      <li><a href="#retiros" data-t="navRet"></a></li>
+      <li><a href="#visite" data-t="navVisit"></a></li>
+    </ul>
+    <div class="nav-r">
+      <div class="lang"><button data-l="pt">PT</button><button data-l="en">EN</button><button data-l="es">ES</button></div>
+      <button class="btn btn-dark" onclick="openPanel('spa')" data-t="navCta"></button>
+      <button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow rv" data-t="heroEyebrow"></div>
+      <h1 class="rv">Casa de <em>Fadas</em></h1>
+      <p class="lead rv" data-t="heroLead"></p>
+      <div class="hero-ctas rv">
+        <button class="btn btn-dark" onclick="openPanel('spa')"><span data-t="heroCta1"></span><span class="ar">→</span></button>
+        <a class="btn btn-line" href="#hospedagens" data-t="heroCta2"></a>
+      </div>
+      <p class="hero-note rv"><span class="dot"></span><span data-t="heroNote"></span></p>
+    </div>
+    <div class="hero-art rv">
+      <svg class="loop" viewBox="0 0 420 300" fill="none"><path d="M10 120 C 90 60, 200 70, 300 105 S 400 120, 395 70 S 340 30, 345 80 S 380 200, 330 290" stroke="#efc3be" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="arch"><img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?w=1000&q=75" alt="" data-alt="heroAlt"></div>
+      <div class="badge"><img src="images/logo_spa.jpg" alt="Spa de Fadas"></div>
+      <span class="spark" style="right:-18px;top:38%">✳</span>
+      <span class="spark" style="right:10px;top:46%;font-size:12px;animation-delay:1s">✳</span>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#duo" data-t="scroll"></a>
+</header>
+
+<section class="sec" id="duo">
+  <div class="wrap">
+    <div class="duo-head rv">
+      <div class="eyebrow" data-t="duoEyebrow"></div>
+      <h2 class="h2" data-th="duoTitle"></h2>
+    </div>
+    <div class="duo">
+      <a class="duo-card casa rv" href="#casa">
+        <img class="duo-logo" src="images/logo_casa.jpg" alt="">
+        <h3>Casa de <em>Fadas</em></h3>
+        <p data-t="casaCardBio"></p>
+        <div class="duo-foot"><span class="handle">@casa.de.fadas</span><span class="duo-go"><span data-t="casaCardCta"></span> →</span></div>
+      </a>
+      <a class="duo-card spa rv" href="#spa">
+        <img class="duo-logo" src="images/logo_spa.jpg" alt="">
+        <h3>Spa de <em>Fadas</em></h3>
+        <p data-t="spaCardBio"></p>
+        <div class="duo-foot"><span class="handle">@spa.de.fadas</span><span class="duo-go"><span data-t="spaCardCta"></span> →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec spa" id="spa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow" data-t="spaEyebrow"></div>
+        <h2 class="h2" data-th="spaTitle"></h2>
+      </div>
+      <div class="side rv">
+        <p class="lead" data-t="spaLead"></p>
+        <div class="from"><span data-t="from"></span> <strong>R$ 60</strong></div>
+      </div>
+    </div>
+    <div class="svc-grid" id="svc-grid"></div>
+
+    <div class="day rv" id="spaday">
+      <div class="day-grid">
+        <div>
+          <div class="eyebrow" data-t="dayEyebrow"></div>
+          <h2 class="h2" data-th="dayTitle"></h2>
+          <p class="lead" data-t="dayLead"></p>
+          <a class="btn btn-light" target="_blank" rel="noopener" data-wa="day"><span data-t="dayCta"></span><span class="ar">→</span></a>
+        </div>
+        <ol class="ritual" id="ritual"></ol>
+      </div>
+    </div>
+    <div class="mini">
+      <div class="mini-card rv"><div class="eyebrow" data-t="athEyebrow"></div><h4 data-t="athTitle"></h4><p data-t="athText"></p><a class="txt-link" target="_blank" rel="noopener" data-wa="ath" data-t="athCta"></a></div>
+      <div class="mini-card rv"><div class="eyebrow" data-t="partEyebrow"></div><h4 data-t="partTitle"></h4><p data-t="partText"></p><a class="txt-link" target="_blank" rel="noopener" data-wa="part" data-t="partCta"></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="casa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow" data-t="casaEyebrow"></div>
+        <h2 class="h2" data-th="casaTitle"></h2>
+      </div>
+      <div class="side rv"><p class="lead" data-t="casaLead"></p></div>
+    </div>
+    <div class="pillars rv" id="pillars"></div>
+
+    <div class="stays-head" id="hospedagens">
+      <div class="rv"><div class="eyebrow" data-t="staysEyebrow"></div><h3 style="margin-top:14px" data-th="staysTitle"></h3><p data-t="staysLead"></p></div>
+      <div class="arrows"><button onclick="slide(-1)" aria-label="‹">←</button><button onclick="slide(1)" aria-label="›">→</button></div>
+    </div>
+    <div class="stays" id="stays"></div>
+
+    <div class="retreat rv" id="retiros">
+      <div class="retreat-img"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1100&q=75" alt="" loading="lazy" onerror="this.remove()"></div>
+      <div class="retreat-body">
+        <div class="eyebrow" data-t="retEyebrow"></div>
+        <h2 class="h2" data-th="retTitle"></h2>
+        <p class="lead" data-t="retLead"></p>
+        <a class="btn btn-dark" target="_blank" rel="noopener" data-wa="ret"><span data-t="retCta"></span><span class="ar">→</span></a>
+      </div>
+    </div>
+    <div class="community rv">
+      <div><h4 data-t="commTitle"></h4><p data-t="commText"></p></div>
+      <a class="btn btn-line" href="https://chat.whatsapp.com/Esmk1fNl0tAFykz8aKgHIq" target="_blank" rel="noopener"><span data-t="commCta"></span><span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="ig">
+  <div class="wrap">
+    <div class="eyebrow" data-t="igEyebrow"></div>
+    <div class="ig-row">
+      <a class="ig-card" href="https://instagram.com/casa.de.fadas" target="_blank" rel="noopener"><img src="images/logo_casa.jpg" alt=""><div><b>@casa.de.fadas</b><span data-t="igCasa"></span></div></a>
+      <a class="ig-card" href="https://instagram.com/spa.de.fadas" target="_blank" rel="noopener"><img src="images/logo_spa.jpg" alt=""><div><b>@spa.de.fadas</b><span data-t="igSpa"></span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visite">
+  <div class="wrap visit-grid">
+    <div class="rv">
+      <div class="eyebrow" data-t="visitEyebrow"></div>
+      <h2 class="h2" data-th="visitTitle"></h2>
+      <p class="lead" data-t="visitText"></p>
+    </div>
+    <ul class="contact-list rv">
+      <li><a href="https://www.instagram.com/reel/Cos3LgCjnaP/" target="_blank" rel="noopener"><div><b data-t="c1"></b><small data-t="c1s"></small></div><span class="ar">↗</span></a></li>
+      <li><a target="_blank" rel="noopener" data-wa="hello"><div><b data-t="c2"></b><small>+55 48 99908-9752</small></div><span class="ar">↗</span></a></li>
+      <li><a href="https://linktr.ee/casa.de.fadas" target="_blank" rel="noopener"><div><b data-t="c3"></b><small>linktr.ee/casa.de.fadas</small></div><span class="ar">↗</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><img src="images/logo_casa.jpg" alt="">Casa de <em>Fadas</em></a>
+    <span data-t="foot"></span>
+    <span>© <span id="yr"></span></span>
+  </div>
+</footer>
+
+<a class="wa-fab" target="_blank" rel="noopener" data-wa="hello" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3.2 29l7.3-1.9c1.8 1 3.9 1.5 5.9 1.5 7 0 12.7-5.7 12.7-12.6S23 3 16 3zm0 23.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.3 1.1 1.2-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.2 9.8 10 5.1 16 5.1s10.7 4.7 10.7 10.5S21.9 26.2 16 26.2zm5.9-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2s0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.1 1.3 3.3 2.3 3.5 5.6 4.9c.8.3 1.4.5 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg></a>
+
+<div class="ov" id="ov" onclick="if(event.target===this)closePanel()">
+  <aside class="drawer" role="dialog" aria-modal="true">
+    <div class="dr-head"><div class="dr-title" id="dr-title"></div><button class="dr-x" onclick="closePanel()" aria-label="Fechar">✕</button></div>
+    <div class="dr-body" id="dr-body"></div>
+    <div class="dr-foot" id="dr-foot"></div>
+  </aside>
+</div>
+
+<script>
+// ─── Contatos (confirme os números) ───
+const WA_SPA  = '5548999089752';   // "Agendamento SPA de Fadas" no linktr.ee
+const WA_CASA = '5548999089752';   // ajuste se a Casa usar outro número
+
+const T = {
+  pt: {
+    tabHome:'Início', tabSpa:'Spa de Fadas', tabCasa:'Casa de Fadas',
+    homeTagline:'Um espaço bio-construído de experiências únicas — onde a natureza, a arte e o bem-estar se encontram.',
+    spaTag:'Bem-estar integrativo', casaTag:'Hospedagem · Bioconstrução',
+    spaH:'Atendimento Integrativo',
+    spaL1:'Atendimento Integrativo', spaL2:'Massagens · Quiropraxia · Naturopatia',
+    spaL3:'Gelo · Caixa de Vapor · Banho de Ervas',
+    casaH:'Casa de Experiências',
+    casaL1:'Casa de Experiências', casaL2:'Arte · Consciência · Sustentabilidade',
+    casaL3:'#bioconstrução · Temos Hospedagens',
+    spaCtaHome:'Agendar sessão', casaCtaHome:'Reservar estadia',
+    spaStripDesc:'Massagens · Quiropraxia · Naturopatia · Gelo · Caixa de Vapor · Banho de Ervas. Localizado dentro da Casa de Fadas.',
+    casaStripDesc:'Arte · Consciência · Sustentabilidade · #bioconstrução. Temos Hospedagens. Aqui também funciona o Spa de Fadas.',
+    spaPills:['Massagem','Quiropraxia','Naturopatia','Banho de Gelo','Sauna','Banho de Ervas','Yoga'],
+    casaPills:['Bioconstrução','Arte','Consciência','Sustentabilidade','Hospedagem'],
+    spaBookTitle:'Agende sua sessão', spaBookSub:'Escolha o serviço, data e horário. Confirmamos por WhatsApp.',
+    casaBookTitle:'Reserve sua estadia', casaBookSub:'Escolha a acomodação e as datas. Nossa equipe confirma por WhatsApp.',
+    from:'A partir de', seeServices:'Ver todos os serviços', seeRooms:'Ver acomodações',
+    stepSvc:'Serviço', stepDT:'Data & Horário', stepTime:'Horário disponível',
+    stepInfo:'Seus dados', stepSum:'Resumo', stepRoom:'Acomodação',
+    stepDates:'Datas & Hóspedes', stepGuests:'Hóspedes',
+    spaT1:'Qual experiência você busca?', spaT2:'Quando você vem?',
+    spaT3:'Como encontramos você?', spaT4:'Confirme seu agendamento',
+    casaT1:'Onde você quer despertar?', casaT2:'Planeje sua estadia',
+    casaT3:'Como encontramos você?', casaT4:'Confirme sua reserva',
+    back:'Voltar', cont:'Continuar', rev:'Revisar',
+    fName:'Nome completo', fNotes:'Observações', fSpecial:'Pedidos especiais',
+    lSvc:'Serviço', lDate:'Data', lTime:'Horário', lName:'Nome', lPhone:'Telefone',
+    lTotal:'Total', lRoom:'Acomodação', lCheckin:'Check-in', lCheckout:'Check-out',
+    lNights:'Noites', lGuests:'Hóspedes', lTotalEst:'Total estimado',
+    priceNote:'* Valor final confirmado via WhatsApp.',
+    cfSpa:'Confirmar agendamento', cfCasa:'Solicitar reserva',
+    spaOk:'Agendamento confirmado!', spaOkSub:'Em breve você receberá uma confirmação por WhatsApp.',
+    casaOk:'Solicitação enviada!', casaOkSub:'Nossa equipe entrará em contato via WhatsApp para confirmar sua estadia.',
+    newB:'Novo agendamento', newR:'Nova reserva',
+    adults:'Adultos', children:'Crianças', childAge:'até 12 anos',
+    days:['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+    months:['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    services:[
+      {name:'Sauna Box', price:'R$ 80', dur:'45 min',
+        img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=70',
+        desc:`<p>A <strong>Sauna Box</strong> é uma cabine privativa de vapor seco que combina calor suave com madeira natural para criar um ambiente de purificação e reconexão profunda.</p><p>O calor penetra nos tecidos, dilata os vasos sanguíneos, acelera a circulação e promove a eliminação de toxinas através da transpiração. Em 45 minutos você sente o corpo mais leve, a mente mais calma e a pele renovada.</p>`,
+        benefits:['Desintoxicação', 'Alívio muscular', 'Circulação', 'Relaxamento profundo']},
+      {name:'Banho de Gelo', price:'R$ 60', dur:'20 min',
+        img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=70',
+        desc:`<p>A imersão em água gelada é uma técnica milenar de recuperação e vitalidade utilizada por atletas e praticantes de bem-estar em todo o mundo.</p><p>O contraste térmico ativa o sistema nervoso, libera endorfinas e fortalece a resposta imunológica. Após a sessão, a sensação de energia e clareza mental é imediata e duradoura.</p>`,
+        benefits:['Recuperação muscular', 'Energia', 'Imunidade', 'Clareza mental']},
+      {name:'Massagem', price:'R$ 150', dur:'60 min',
+        img:'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=70',
+        desc:`<p>Nossa <strong>Massagem Terapêutica Integrativa</strong> combina técnicas de massoterapia clínica, quiropraxia e naturopatia para tratar tanto o corpo físico quanto os padrões de tensão emocional.</p><p>Cada sessão é personalizada conforme suas necessidades: alívio de dores, relaxamento profundo, liberação de bloqueios energéticos ou reequilíbrio postural.</p>`,
+        benefits:['Alívio de dores', 'Postura', 'Relaxamento', 'Equilíbrio energético']},
+      {name:'Banho de Ervas', price:'R$ 90', dur:'40 min',
+        img:'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=70',
+        desc:`<p>Um <strong>ritual ancestral de cura</strong> com ervas medicinais selecionadas segundo a intenção de cada sessão — relaxantes, revitalizantes ou depurativas.</p><p>A água aquecida com as ervas penetra pela pele, ativa os sentidos e cria um espaço de conexão profunda consigo mesmo. Ideal antes ou após outras terapias do Spa.</p>`,
+        benefits:['Purificação', 'Aromaterapia', 'Pele', 'Conexão interna']},
+      {name:'Yoga Particular', price:'R$ 120', dur:'60 min',
+        img:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=70',
+        desc:`<p>Aula <strong>individual e personalizada</strong> com instrutor dedicado, adaptada ao seu nível, intenção e necessidades do dia.</p><p>Seja para iniciantes em busca de fundamentos, praticantes que desejam aprofundar a técnica, ou pessoas que buscam yoga como ferramenta terapêutica — cada sessão é única e cuidadosamente conduzida no espaço da Casa de Fadas.</p>`,
+        benefits:['Flexibilidade', 'Respiração', 'Foco mental', 'Equilíbrio']},
+    ],
+    icons:['🧖','🧊','💆','🌿','🧘'],
+    rooms:[
+      {name:'Quarto Floresta', price:'R$ 280', unit:'/noite',
+        img:'https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?w=600&q=70',
+        desc:`<p>Acomodação íntima bio-construída com materiais naturais — terra crua, madeira de reflorestamento e pedra local. As paredes de taipa regulam naturalmente a temperatura.</p><p>Vista para o jardim medicinal, cama de casal confortável e banheiro privativo com acabamentos naturais. Inclui café da manhã preparado com ingredientes da horta.</p>`,
+        ams:['Cama casal','Banheiro privativo','Café da manhã','Vista ao jardim']},
+      {name:'Suíte das Ervas', price:'R$ 420', unit:'/noite',
+        img:'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&q=70',
+        desc:`<p>Espaço amplo com <strong>banheira de imersão</strong> em madeira e aromas terapêuticos de ervas frescas. A suíte foi projetada para quem busca uma experiência sensorial completa.</p><p>Varanda privativa com vista para a natureza, cama king e acesso ao jardim contemplativo. A aromaterapia da suíte é renovada a cada hospedagem.</p>`,
+        ams:['Cama king','Banheira de imersão','Varanda privativa','Café da manhã','Aromaterapia']},
+      {name:'Chalé da Lua', price:'R$ 580', unit:'/noite',
+        img:'https://images.unsplash.com/photo-1499678329028-101435549a4e?w=600&q=70',
+        desc:`<p>Chalé independente bio-construído em meio à natureza — total privacidade, silêncio e reconexão. Com quarto, sala de estar, cozinha compacta e deck externo.</p><p>À noite, uma fogueira a céu aberto convida para noites de contemplação. O chalé fica a poucos passos do Spa de Fadas, incluindo acesso prioritário aos serviços.</p>`,
+        ams:['Quarto + sala','Cozinha compacta','Deck externo','Fogueira','Café da manhã']},
+      {name:'Dormitório Coletivo', price:'R$ 120', unit:'/pessoa/noite',
+        img:'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=70',
+        desc:`<p>Uma experiência de comunidade e encontro em espaço acolhedor e sustentável. Ideal para quem viaja solo, grupos de amigos ou retiros coletivos.</p><p>Ambiente de convivência compartilhada com valores de consciência e respeito. Acesso à cozinha coletiva, área de descanso e café da manhã comunitário.</p>`,
+        ams:['Camas compartilhadas','Área comum','Cozinha coletiva','Café da manhã']},
+    ],
+    rIcons:['🌲','🌸','🌙','🤝']
+  },
+  en: {
+    tabHome:'Home', tabSpa:'Fairy Spa', tabCasa:'Fairy House',
+    homeTagline:'A bio-built space of unique experiences — where nature, art and well-being meet.',
+    spaTag:'Integrative wellness', casaTag:'Accommodation · Bioconstruction',
+    spaH:'Integrative Care',
+    spaL1:'Integrative Care', spaL2:'Massages · Chiropraxis · Naturopathy',
+    spaL3:'Ice · Steam Box · Herbal Bath',
+    casaH:'Experience House',
+    casaL1:'Experience House', casaL2:'Art · Consciousness · Sustainability',
+    casaL3:'#bioconstruction · We have Accommodation',
+    spaCtaHome:'Book a session', casaCtaHome:'Book a stay',
+    spaStripDesc:'Massages · Chiropraxis · Naturopathy · Ice Bath · Steam Box · Herbal Bath. Located inside Casa de Fadas.',
+    casaStripDesc:'Art · Consciousness · Sustainability · #bioconstruction. Immersive accommodation. Spa de Fadas is here.',
+    spaPills:['Massage','Chiropraxis','Naturopathy','Ice Bath','Sauna','Herbal Bath','Yoga'],
+    casaPills:['Bioconstruction','Art','Consciousness','Sustainability','Accommodation'],
+    spaBookTitle:'Book your session', spaBookSub:'Choose service, date and time. We confirm via WhatsApp.',
+    casaBookTitle:'Book your stay', casaBookSub:'Choose accommodation and dates. Our team confirms via WhatsApp.',
+    from:'From', seeServices:'See all services', seeRooms:'See accommodations',
+    stepSvc:'Service', stepDT:'Date & Time', stepTime:'Available slots',
+    stepInfo:'Your details', stepSum:'Summary', stepRoom:'Accommodation',
+    stepDates:'Dates & Guests', stepGuests:'Guests',
+    spaT1:'What experience are you seeking?', spaT2:'When are you coming?',
+    spaT3:'How do we reach you?', spaT4:'Confirm your booking',
+    casaT1:'Where do you want to wake up?', casaT2:'Plan your stay',
+    casaT3:'How do we reach you?', casaT4:'Confirm your reservation',
+    back:'Back', cont:'Continue', rev:'Review',
+    fName:'Full name', fNotes:'Notes', fSpecial:'Special requests',
+    lSvc:'Service', lDate:'Date', lTime:'Time', lName:'Name', lPhone:'Phone',
+    lTotal:'Total', lRoom:'Accommodation', lCheckin:'Check-in', lCheckout:'Check-out',
+    lNights:'Nights', lGuests:'Guests', lTotalEst:'Estimated total',
+    priceNote:'* Final price confirmed via WhatsApp.',
+    cfSpa:'Confirm booking', cfCasa:'Request reservation',
+    spaOk:'Booking confirmed!', spaOkSub:'You will receive a WhatsApp confirmation shortly.',
+    casaOk:'Request sent!', casaOkSub:'Our team will contact you via WhatsApp to confirm your stay.',
+    newB:'New booking', newR:'New reservation',
+    adults:'Adults', children:'Children', childAge:'up to 12 years',
+    days:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+    months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+    services:[
+      {name:'Sauna Box', price:'R$ 80', dur:'45 min',
+        img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=70',
+        desc:`<p>The <strong>Sauna Box</strong> is a private dry-steam cabin combining gentle heat with natural wood to create a space of purification and deep reconnection.</p><p>Heat penetrates the tissues, dilates blood vessels, boosts circulation and promotes toxin elimination through perspiration. In 45 minutes, your body feels lighter and your mind calmer.</p>`,
+        benefits:['Detox','Muscle relief','Circulation','Deep relaxation']},
+      {name:'Ice Bath', price:'R$ 60', dur:'20 min',
+        img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=70',
+        desc:`<p>Cold water immersion is an ancient recovery technique used by athletes and wellness practitioners worldwide.</p><p>Thermal contrast activates the nervous system, releases endorphins and strengthens immune response. After the session, the feeling of energy and mental clarity is immediate and lasting.</p>`,
+        benefits:['Muscle recovery','Energy','Immunity','Mental clarity']},
+      {name:'Massage', price:'R$ 150', dur:'60 min',
+        img:'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=70',
+        desc:`<p>Our <strong>Integrative Therapeutic Massage</strong> combines massage therapy, chiropraxis and naturopathy techniques to address both physical and emotional tension patterns.</p><p>Each session is personalised to your needs — pain relief, deep relaxation, energy blockage release or postural rebalancing.</p>`,
+        benefits:['Pain relief','Posture','Relaxation','Energy balance']},
+      {name:'Herbal Bath', price:'R$ 90', dur:'40 min',
+        img:'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=70',
+        desc:`<p>An <strong>ancestral healing ritual</strong> with medicinal herbs selected according to each session's intention — relaxing, revitalising or purifying.</p><p>Warm water infused with herbs is absorbed through the skin, activating the senses and creating a space of deep self-connection. Ideal before or after other Spa therapies.</p>`,
+        benefits:['Purification','Aromatherapy','Skin','Inner connection']},
+      {name:'Private Yoga', price:'R$ 120', dur:'60 min',
+        img:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=70',
+        desc:`<p>A fully <strong>personalised one-on-one class</strong> with a dedicated instructor, adapted to your level, intention and needs of the day.</p><p>Whether for beginners seeking foundations, practitioners wanting to deepen technique, or those using yoga as a therapeutic tool — each session is unique and conducted in the Casa de Fadas space.</p>`,
+        benefits:['Flexibility','Breathing','Mental focus','Balance']},
+    ],
+    icons:['🧖','🧊','💆','🌿','🧘'],
+    rooms:[
+      {name:'Forest Room', price:'R$ 280', unit:'/night',
+        img:'https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?w=600&q=70',
+        desc:`<p>Intimate bio-built accommodation with natural materials — raw earth, reforestation wood and local stone. Rammed earth walls naturally regulate temperature.</p><p>Garden view, comfortable double bed and private bathroom with natural finishes. Includes breakfast prepared with garden ingredients.</p>`,
+        ams:['Double bed','Private bathroom','Breakfast','Garden view']},
+      {name:'Herb Suite', price:'R$ 420', unit:'/night',
+        img:'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&q=70',
+        desc:`<p>Spacious room with a wooden <strong>soaking tub</strong> and therapeutic aromas from fresh herbs. Designed for a complete sensory experience.</p><p>Private veranda overlooking nature, king bed and access to the contemplative garden. The suite's aromatherapy is renewed for each stay.</p>`,
+        ams:['King bed','Soaking tub','Private veranda','Breakfast','Aromatherapy']},
+      {name:'Moon Cabin', price:'R$ 580', unit:'/night',
+        img:'https://images.unsplash.com/photo-1499678329028-101435549a4e?w=600&q=70',
+        desc:`<p>Independent bio-built cabin in the middle of nature — total privacy, silence and reconnection. With bedroom, living area, kitchenette and outdoor deck.</p><p>At night, an open fire invites evenings of contemplation. The cabin is steps from Spa de Fadas, with priority access to its services.</p>`,
+        ams:['Bedroom + lounge','Kitchenette','Outdoor deck','Firepit','Breakfast']},
+      {name:'Community Dorm', price:'R$ 120', unit:'/person/night',
+        img:'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=70',
+        desc:`<p>A community and encounter experience in a welcoming, sustainable space. Ideal for solo travellers, friend groups or collective retreats.</p><p>Shared living environment with values of consciousness and respect. Access to communal kitchen, rest area and communal breakfast.</p>`,
+        ams:['Shared beds','Common area','Communal kitchen','Breakfast']},
+    ],
+    rIcons:['🌲','🌸','🌙','🤝']
+  },
+  es: {
+    tabHome:'Inicio', tabSpa:'Spa de Hadas', tabCasa:'Casa de Hadas',
+    homeTagline:'Un espacio bio-construido de experiencias únicas — donde la naturaleza, el arte y el bienestar se encuentran.',
+    spaTag:'Bienestar integrativo', casaTag:'Hospedaje · Bioconstrucción',
+    spaH:'Atención Integrativa',
+    spaL1:'Atención Integrativa', spaL2:'Masajes · Quiropraxia · Naturopatía',
+    spaL3:'Hielo · Caja de Vapor · Baño de Hierbas',
+    casaH:'Casa de Experiencias',
+    casaL1:'Casa de Experiencias', casaL2:'Arte · Consciencia · Sostenibilidad',
+    casaL3:'#bioconstrucción · Tenemos Hospedajes',
+    spaCtaHome:'Agendar sesión', casaCtaHome:'Reservar estadía',
+    spaStripDesc:'Masajes · Quiropraxia · Naturopatía · Baño de Hielo · Caja de Vapor · Baño de Hierbas. Ubicado en Casa de Hadas.',
+    casaStripDesc:'Arte · Consciencia · Sostenibilidad · #bioconstrucción. Tenemos Hospedajes. Aquí también funciona el Spa de Hadas.',
+    spaPills:['Masaje','Quiropraxia','Naturopatía','Baño de Hielo','Sauna','Baño de Hierbas','Yoga'],
+    casaPills:['Bioconstrucción','Arte','Consciencia','Sostenibilidad','Hospedaje'],
+    spaBookTitle:'Agenda tu sesión', spaBookSub:'Elige servicio, fecha y hora. Confirmamos por WhatsApp.',
+    casaBookTitle:'Reserva tu estadía', casaBookSub:'Elige alojamiento y fechas. Nuestro equipo confirma por WhatsApp.',
+    from:'Desde', seeServices:'Ver todos los servicios', seeRooms:'Ver alojamientos',
+    stepSvc:'Servicio', stepDT:'Fecha y Hora', stepTime:'Horarios disponibles',
+    stepInfo:'Tus datos', stepSum:'Resumen', stepRoom:'Alojamiento',
+    stepDates:'Fechas y Huéspedes', stepGuests:'Huéspedes',
+    spaT1:'¿Qué experiencia buscas?', spaT2:'¿Cuándo vienes?',
+    spaT3:'¿Cómo te contactamos?', spaT4:'Confirma tu reserva',
+    casaT1:'¿Dónde quieres despertar?', casaT2:'Planea tu estadía',
+    casaT3:'¿Cómo te contactamos?', casaT4:'Confirma tu reserva',
+    back:'Volver', cont:'Continuar', rev:'Revisar',
+    fName:'Nombre completo', fNotes:'Observaciones', fSpecial:'Pedidos especiales',
+    lSvc:'Servicio', lDate:'Fecha', lTime:'Horario', lName:'Nombre', lPhone:'Teléfono',
+    lTotal:'Total', lRoom:'Alojamiento', lCheckin:'Check-in', lCheckout:'Check-out',
+    lNights:'Noches', lGuests:'Huéspedes', lTotalEst:'Total estimado',
+    priceNote:'* Precio final confirmado por WhatsApp.',
+    cfSpa:'Confirmar reserva', cfCasa:'Solicitar reserva',
+    spaOk:'¡Reserva confirmada!', spaOkSub:'Pronto recibirás una confirmación por WhatsApp.',
+    casaOk:'¡Solicitud enviada!', casaOkSub:'Nuestro equipo te contactará por WhatsApp para confirmar tu estadía.',
+    newB:'Nueva reserva', newR:'Nueva reserva',
+    adults:'Adultos', children:'Niños', childAge:'hasta 12 años',
+    days:['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+    months:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+    services:[
+      {name:'Caja Sauna', price:'R$ 80', dur:'45 min',
+        img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=70',
+        desc:`<p>La <strong>Caja Sauna</strong> es una cabina privada de vapor seco que combina calor suave con madera natural para crear un ambiente de purificación y reconexión profunda.</p><p>El calor penetra los tejidos, dilata los vasos sanguíneos, acelera la circulación y promueve la eliminación de toxinas. En 45 minutos sentirás el cuerpo más ligero y la mente más tranquila.</p>`,
+        benefits:['Desintoxicación','Alivio muscular','Circulación','Relajación profunda']},
+      {name:'Baño de Hielo', price:'R$ 60', dur:'20 min',
+        img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=70',
+        desc:`<p>La inmersión en agua helada es una técnica milenaria de recuperación y vitalidad utilizada por atletas y practicantes de bienestar en todo el mundo.</p><p>El contraste térmico activa el sistema nervioso, libera endorfinas y fortalece la respuesta inmune. La sensación de energía y claridad mental es inmediata y duradera.</p>`,
+        benefits:['Recuperación muscular','Energía','Inmunidad','Claridad mental']},
+      {name:'Masaje', price:'R$ 150', dur:'60 min',
+        img:'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=70',
+        desc:`<p>Nuestro <strong>Masaje Terapéutico Integrativo</strong> combina técnicas de masoterapia clínica, quiropraxia y naturopatía para tratar tanto el cuerpo físico como los patrones de tensión emocional.</p><p>Cada sesión es personalizada: alivio de dolores, relajación profunda, liberación de bloqueos energéticos o reequilibrio postural.</p>`,
+        benefits:['Alivio de dolores','Postura','Relajación','Equilibrio energético']},
+      {name:'Baño de Hierbas', price:'R$ 90', dur:'40 min',
+        img:'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=70',
+        desc:`<p>Un <strong>ritual ancestral de sanación</strong> con hierbas medicinales seleccionadas según la intención de cada sesión — relajantes, revitalizantes o depurativas.</p><p>El agua caliente con hierbas se absorbe por la piel, activa los sentidos y crea un espacio de conexión profunda con uno mismo. Ideal antes o después de otras terapias del Spa.</p>`,
+        benefits:['Purificación','Aromaterapia','Piel','Conexión interna']},
+      {name:'Yoga Privado', price:'R$ 120', dur:'60 min',
+        img:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=70',
+        desc:`<p>Clase <strong>individual y personalizada</strong> con instructor dedicado, adaptada a tu nivel, intención y necesidades del día.</p><p>Tanto para principiantes que buscan fundamentos, practicantes que quieren profundizar, o personas que usan el yoga como herramienta terapéutica — cada sesión es única en el espacio de la Casa de Hadas.</p>`,
+        benefits:['Flexibilidad','Respiración','Enfoque mental','Equilibrio']},
+    ],
+    icons:['🧖','🧊','💆','🌿','🧘'],
+    rooms:[
+      {name:'Habitación Bosque', price:'R$ 280', unit:'/noche',
+        img:'https://images.unsplash.com/photo-1562438668-bcf0ca6578f0?w=600&q=70',
+        desc:`<p>Alojamiento íntimo bio-construido con materiales naturales — tierra cruda, madera de reforestación y piedra local. Las paredes de tapia regulan naturalmente la temperatura.</p><p>Vista al jardín medicinal, cama doble cómoda y baño privado con acabados naturales. Incluye desayuno con ingredientes del huerto.</p>`,
+        ams:['Cama doble','Baño privado','Desayuno','Vista al jardín']},
+      {name:'Suite de Hierbas', price:'R$ 420', unit:'/noche',
+        img:'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&q=70',
+        desc:`<p>Espacio amplio con <strong>tina de inmersión</strong> en madera y aromas terapéuticos de hierbas frescas. Diseñado para una experiencia sensorial completa.</p><p>Terraza privada con vista a la naturaleza, cama king y acceso al jardín contemplativo. La aromaterapia se renueva en cada hospedaje.</p>`,
+        ams:['Cama king','Tina de inmersión','Terraza privada','Desayuno','Aromaterapia']},
+      {name:'Cabaña Luna', price:'R$ 580', unit:'/noche',
+        img:'https://images.unsplash.com/photo-1499678329028-101435549a4e?w=600&q=70',
+        desc:`<p>Cabaña independiente bio-construida en medio de la naturaleza — total privacidad, silencio y reconexión. Con dormitorio, sala de estar, cocineta y deck exterior.</p><p>Por las noches, una fogata al aire libre invita a la contemplación. La cabaña está a pasos del Spa de Hadas, con acceso prioritario a sus servicios.</p>`,
+        ams:['Dormitorio + sala','Cocineta','Deck exterior','Fogata','Desayuno']},
+      {name:'Dormitorio Colectivo', price:'R$ 120', unit:'/persona/noche',
+        img:'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=70',
+        desc:`<p>Una experiencia de comunidad y encuentro en un espacio acogedor y sostenible. Ideal para viajeros solos, grupos de amigos o retiros colectivos.</p><p>Ambiente de convivencia compartida con valores de consciencia y respeto. Acceso a cocina colectiva, área de descanso y desayuno comunitario.</p>`,
+        ams:['Camas compartidas','Área común','Cocina colectiva','Desayuno']},
+    ],
+    rIcons:['🌲','🌸','🌙','🤝']
+  }
+};
+
+const S = {
+pt:{navCasa:'A Casa',navSpa:'Spa',navDay:'SPA Day',navRet:'Retiros',navVisit:'Visite',navCta:'Agendar',
+heroEyebrow:'Arte · Consciência · Sustentabilidade',heroLead:'Uma casa sustentável de experiências de consciência, bioconstruída em meio à natureza. Aqui funciona o Spa de Fadas.',heroCta1:'Agendar no Spa',heroCta2:'Ver hospedagens',heroNote:'Agendamentos e reservas confirmados pelo WhatsApp',scroll:'Role ↓',
+duoEyebrow:'Dois espaços, uma só casa',duoTitle:'Escolha por onde <em>começar</em>',
+casaCardBio:'Casa de experiências de arte, consciência e sustentabilidade. Hospedagens, retiros e locação do espaço — #bioconstrução.',casaCardCta:'Conhecer a Casa',
+spaCardBio:'Wellness e SPA natural. Massagens, sauna e banhos — minimalismo sofisticado na natureza, dentro da Casa de Fadas.',spaCardCta:'Conhecer o Spa',
+spaEyebrow:'Spa de Fadas · Wellness natural',spaTitle:'Minimalismo sofisticado <em>na natureza</em>',spaLead:'Atendimento integrativo dentro da Casa de Fadas: massagens, quiropraxia e naturopatia, sauna, banho de gelo e banhos de ervas. Cada sessão é pensada para o seu corpo e o seu momento.',
+bookThis:'Agendar',
+dayEyebrow:'SPA Day',dayTitle:'Um dia inteiro <em>para você</em>',dayLead:'Combine os rituais do Spa em uma jornada completa — calor, frio, ervas e toque. Montamos o seu SPA Day pelo WhatsApp, só para você ou para um grupo.',dayCta:'Montar meu SPA Day',
+ritual:[['Sauna','Aquecer e soltar'],['Banho de Gelo','Despertar o corpo'],['Banho de Ervas','Purificar os sentidos'],['Massagem','Integrar e descansar']],
+athEyebrow:'Atletas',athTitle:'Recuperação para quem treina',athText:'Protocolos com contraste térmico — sauna e banho de gelo — e massagem para acelerar a recuperação muscular.',athCta:'Consultar protocolo',
+partEyebrow:'Parcerias',partTitle:'Vamos criar juntos?',partText:'Trabalhamos com terapeutas, marcas e criadores alinhados ao bem-estar consciente.',partCta:'Propor parceria',
+casaEyebrow:'Casa de Fadas · #bioconstrução',casaTitle:'Uma casa feita de terra, <em>arte e encontro</em>',casaLead:'Erguida com técnicas de bioconstrução e materiais naturais, a Casa de Fadas é um lugar para desacelerar, criar e conviver — e também para se hospedar.',
+pillars:[['Bioconstrução','Terra, madeira e pedra: uma arquitetura que respira com o lugar.'],['Arte','Vivências, oficinas e encontros criativos ao longo do ano.'],['Consciência','Práticas de autocuidado, yoga e rodas de partilha.'],['Sustentabilidade','Cuidado com a terra e respeito ao ritmo da natureza.']],
+staysEyebrow:'Hospedagens',staysTitle:'Onde você quer <em>despertar?</em>',staysLead:'Acomodações bioconstruídas, a poucos passos do Spa.',reserve:'Reservar',
+retEyebrow:'Retiros & Locação',retTitle:'Traga o seu <em>encontro</em> para a Casa',retLead:'Retiros, imersões, workshops e celebrações. O espaço pode ser locado com hospedagem e acesso ao Spa.',retCta:'Solicitar orçamento',
+commTitle:'Fique por dentro',commText:'Entre no grupo de WhatsApp da Casa e receba a agenda de vivências, retiros e novidades.',commCta:'Entrar no grupo',
+igEyebrow:'Acompanhe no Instagram',igCasa:'Arte · Consciência · Hospedagem',igSpa:'Massagens · Sauna · Banhos',
+visitEyebrow:'Visite',visitTitle:'Como <em>chegar</em>',visitText:'Veja o caminho até a Casa no nosso vídeo e combine a sua visita pelo WhatsApp.',
+c1:'Como chegar',c1s:'Vídeo com o caminho até a Casa',c2:'WhatsApp',c3:'Todos os links',
+foot:'Casa de Fadas · Spa de Fadas',
+waSend:'Enviar pelo WhatsApp',okTitle:'Quase lá!',okSub:'Abrimos o WhatsApp com o seu pedido pronto. É só enviar a mensagem — nossa equipe confirma em seguida.',okAgain:'Abrir WhatsApp de novo',
+pickDate:'Escolha uma data para ver os horários.',email:'E-mail (opcional)',
+wa:{hello:'Olá! Vim pelo site da Casa de Fadas e gostaria de mais informações.',day:'Olá! Gostaria de montar um SPA Day no Spa de Fadas.',ath:'Olá! Sou atleta e gostaria de saber sobre os protocolos de recuperação do Spa de Fadas.',part:'Olá! Gostaria de propor uma parceria com a Casa/Spa de Fadas.',ret:'Olá! Gostaria de um orçamento para retiro/locação do espaço da Casa de Fadas.',spa:'Olá! Gostaria de agendar no Spa de Fadas:',casa:'Olá! Gostaria de solicitar uma reserva na Casa de Fadas:'}},
+en:{navCasa:'The House',navSpa:'Spa',navDay:'SPA Day',navRet:'Retreats',navVisit:'Visit',navCta:'Book',
+heroEyebrow:'Art · Consciousness · Sustainability',heroLead:'A sustainable house of mindful experiences, bio-built in the middle of nature. Home of Spa de Fadas.',heroCta1:'Book the Spa',heroCta2:'See stays',heroNote:'Bookings confirmed via WhatsApp',scroll:'Scroll ↓',
+duoEyebrow:'Two spaces, one house',duoTitle:'Choose where to <em>begin</em>',
+casaCardBio:'A house of art, consciousness and sustainability experiences. Stays, retreats and venue hire — #bioconstruction.',casaCardCta:'Discover the House',
+spaCardBio:'Wellness and natural SPA. Massages, sauna and baths — sophisticated minimalism in nature, inside Casa de Fadas.',spaCardCta:'Discover the Spa',
+spaEyebrow:'Spa de Fadas · Natural wellness',spaTitle:'Sophisticated minimalism <em>in nature</em>',spaLead:'Integrative care inside Casa de Fadas: massage, chiropraxis and naturopathy, sauna, ice bath and herbal baths. Every session is shaped around your body and your moment.',
+bookThis:'Book',
+dayEyebrow:'SPA Day',dayTitle:'A whole day <em>for you</em>',dayLead:'Combine the Spa rituals into one complete journey — heat, cold, herbs and touch. We plan your SPA Day on WhatsApp, for you alone or for a group.',dayCta:'Plan my SPA Day',
+ritual:[['Sauna','Warm and release'],['Ice Bath','Wake the body'],['Herbal Bath','Purify the senses'],['Massage','Integrate and rest']],
+athEyebrow:'Athletes',athTitle:'Recovery for people who train',athText:'Contrast-therapy protocols — sauna and ice bath — plus massage to speed up muscle recovery.',athCta:'Ask about protocols',
+partEyebrow:'Partnerships',partTitle:'Shall we create together?',partText:'We work with therapists, brands and creators aligned with conscious well-being.',partCta:'Propose a partnership',
+casaEyebrow:'Casa de Fadas · #bioconstruction',casaTitle:'A house made of earth, <em>art and encounter</em>',casaLead:'Raised with bioconstruction techniques and natural materials, Casa de Fadas is a place to slow down, create and gather — and to stay.',
+pillars:[['Bioconstruction','Earth, wood and stone: architecture that breathes with the land.'],['Art','Experiences, workshops and creative gatherings all year.'],['Consciousness','Self-care practices, yoga and sharing circles.'],['Sustainability','Care for the land and respect for nature\'s rhythm.']],
+staysEyebrow:'Stays',staysTitle:'Where do you want to <em>wake up?</em>',staysLead:'Bio-built rooms, a few steps from the Spa.',reserve:'Reserve',
+retEyebrow:'Retreats & Venue',retTitle:'Bring your <em>gathering</em> to the House',retLead:'Retreats, immersions, workshops and celebrations. The space can be hired with accommodation and Spa access.',retCta:'Request a quote',
+commTitle:'Stay in the loop',commText:'Join the House WhatsApp group for upcoming experiences, retreats and news.',commCta:'Join the group',
+igEyebrow:'Follow us on Instagram',igCasa:'Art · Consciousness · Stays',igSpa:'Massage · Sauna · Baths',
+visitEyebrow:'Visit',visitTitle:'How to <em>get here</em>',visitText:'Watch the way to the House in our video and arrange your visit on WhatsApp.',
+c1:'How to get here',c1s:'Video showing the way to the House',c2:'WhatsApp',c3:'All links',
+foot:'Casa de Fadas · Spa de Fadas',
+waSend:'Send via WhatsApp',okTitle:'Almost there!',okSub:'We opened WhatsApp with your request ready. Just send the message — our team will confirm shortly.',okAgain:'Open WhatsApp again',
+pickDate:'Pick a date to see available times.',email:'E-mail (optional)',
+wa:{hello:'Hi! I found Casa de Fadas through the website and would like more information.',day:'Hi! I would like to plan a SPA Day at Spa de Fadas.',ath:'Hi! I am an athlete and would like to know about the Spa de Fadas recovery protocols.',part:'Hi! I would like to propose a partnership with Casa/Spa de Fadas.',ret:'Hi! I would like a quote for a retreat/venue hire at Casa de Fadas.',spa:'Hi! I would like to book at Spa de Fadas:',casa:'Hi! I would like to request a stay at Casa de Fadas:'}},
+es:{navCasa:'La Casa',navSpa:'Spa',navDay:'SPA Day',navRet:'Retiros',navVisit:'Visítanos',navCta:'Reservar',
+heroEyebrow:'Arte · Consciencia · Sostenibilidad',heroLead:'Una casa sostenible de experiencias de consciencia, bioconstruida en medio de la naturaleza. Aquí funciona el Spa de Fadas.',heroCta1:'Reservar en el Spa',heroCta2:'Ver alojamientos',heroNote:'Reservas confirmadas por WhatsApp',scroll:'Desliza ↓',
+duoEyebrow:'Dos espacios, una sola casa',duoTitle:'Elige por dónde <em>empezar</em>',
+casaCardBio:'Casa de experiencias de arte, consciencia y sostenibilidad. Alojamiento, retiros y alquiler del espacio — #bioconstrucción.',casaCardCta:'Conocer la Casa',
+spaCardBio:'Wellness y SPA natural. Masajes, sauna y baños — minimalismo sofisticado en la naturaleza, dentro de la Casa de Fadas.',spaCardCta:'Conocer el Spa',
+spaEyebrow:'Spa de Fadas · Wellness natural',spaTitle:'Minimalismo sofisticado <em>en la naturaleza</em>',spaLead:'Atención integrativa dentro de la Casa de Fadas: masajes, quiropraxia y naturopatía, sauna, baño de hielo y baños de hierbas. Cada sesión se piensa para tu cuerpo y tu momento.',
+bookThis:'Reservar',
+dayEyebrow:'SPA Day',dayTitle:'Un día entero <em>para ti</em>',dayLead:'Combina los rituales del Spa en un recorrido completo — calor, frío, hierbas y tacto. Armamos tu SPA Day por WhatsApp, para ti o para un grupo.',dayCta:'Armar mi SPA Day',
+ritual:[['Sauna','Calentar y soltar'],['Baño de Hielo','Despertar el cuerpo'],['Baño de Hierbas','Purificar los sentidos'],['Masaje','Integrar y descansar']],
+athEyebrow:'Atletas',athTitle:'Recuperación para quien entrena',athText:'Protocolos de contraste térmico — sauna y baño de hielo — y masaje para acelerar la recuperación muscular.',athCta:'Consultar protocolo',
+partEyebrow:'Alianzas',partTitle:'¿Creamos juntos?',partText:'Trabajamos con terapeutas, marcas y creadores alineados con el bienestar consciente.',partCta:'Proponer alianza',
+casaEyebrow:'Casa de Fadas · #bioconstrucción',casaTitle:'Una casa hecha de tierra, <em>arte y encuentro</em>',casaLead:'Levantada con técnicas de bioconstrucción y materiales naturales, la Casa de Fadas es un lugar para bajar el ritmo, crear y convivir — y también para hospedarse.',
+pillars:[['Bioconstrucción','Tierra, madera y piedra: una arquitectura que respira con el lugar.'],['Arte','Vivencias, talleres y encuentros creativos durante el año.'],['Consciencia','Prácticas de autocuidado, yoga y círculos de palabra.'],['Sostenibilidad','Cuidado de la tierra y respeto al ritmo de la naturaleza.']],
+staysEyebrow:'Alojamiento',staysTitle:'¿Dónde quieres <em>despertar?</em>',staysLead:'Habitaciones bioconstruidas, a pocos pasos del Spa.',reserve:'Reservar',
+retEyebrow:'Retiros y Alquiler',retTitle:'Trae tu <em>encuentro</em> a la Casa',retLead:'Retiros, inmersiones, talleres y celebraciones. El espacio se puede alquilar con alojamiento y acceso al Spa.',retCta:'Pedir presupuesto',
+commTitle:'Mantente al día',commText:'Únete al grupo de WhatsApp de la Casa y recibe la agenda de vivencias, retiros y novedades.',commCta:'Unirme al grupo',
+igEyebrow:'Síguenos en Instagram',igCasa:'Arte · Consciencia · Alojamiento',igSpa:'Masajes · Sauna · Baños',
+visitEyebrow:'Visítanos',visitTitle:'Cómo <em>llegar</em>',visitText:'Mira el camino hasta la Casa en nuestro video y coordina tu visita por WhatsApp.',
+c1:'Cómo llegar',c1s:'Video con el camino hasta la Casa',c2:'WhatsApp',c3:'Todos los enlaces',
+foot:'Casa de Fadas · Spa de Fadas',
+waSend:'Enviar por WhatsApp',okTitle:'¡Casi listo!',okSub:'Abrimos WhatsApp con tu pedido listo. Solo envía el mensaje — nuestro equipo confirma enseguida.',okAgain:'Abrir WhatsApp otra vez',
+pickDate:'Elige una fecha para ver los horarios.',email:'E-mail (opcional)',
+wa:{hello:'¡Hola! Vi el sitio de la Casa de Fadas y quisiera más información.',day:'¡Hola! Quisiera armar un SPA Day en el Spa de Fadas.',ath:'¡Hola! Soy atleta y quisiera conocer los protocolos de recuperación del Spa de Fadas.',part:'¡Hola! Quisiera proponer una alianza con Casa/Spa de Fadas.',ret:'¡Hola! Quisiera un presupuesto para retiro/alquiler del espacio de la Casa de Fadas.',spa:'¡Hola! Quisiera reservar en el Spa de Fadas:',casa:'¡Hola! Quisiera solicitar un alojamiento en la Casa de Fadas:'}}
+};
+for (const k in S) Object.assign(T[k], S[k]);
+
+const PILLAR_ICONS = [
+ '<svg viewBox="0 0 34 34"><path d="M5 30h24M8 30V15l9-8 9 8v15M14 30v-7h6v7"/></svg>',
+ '<svg viewBox="0 0 34 34"><path d="M17 4c7 0 13 5 13 11 0 4-3 5-6 5-2 0-3 1-3 3 0 3-2 7-6 7-6 0-11-6-11-13S10 4 17 4z"/><circle cx="11" cy="15" r="1.5"/><circle cx="16" cy="10" r="1.5"/><circle cx="23" cy="12" r="1.5"/></svg>',
+ '<svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="5"/><path d="M17 3v5M17 26v5M3 17h5M26 17h5M7 7l3.5 3.5M23.5 23.5 27 27M27 7l-3.5 3.5M10.5 23.5 7 27"/></svg>',
+ '<svg viewBox="0 0 34 34"><path d="M17 31V15M17 15C17 8 12 4 5 4c0 7 5 11 12 11zM17 19c0-6 5-10 12-10 0 6-5 10-12 10z"/></svg>'
+];
+
+// ─── STATE ───
+let lang = 'pt', panelType = null, step = 1;
+const spaTimes = ['09:00','10:00','11:00','13:00','14:00','15:00','16:00','17:00'];
+const spaOff = ['11:00','15:00'];
+const B = { svc:null, date:null, time:null, room:null, cin:null, cout:null, adults:2, children:0, name:'', phone:'', email:'', notes:'' };
+const now = new Date(); const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+let calM = now.getMonth(), calY = now.getFullYear();
+
+const $ = s => document.querySelector(s);
+const t = () => T[lang];
+const waLink = (num, msg) => `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+const fmt = k => { if(!k) return '—'; const [y,m,d]=k.split('-'); return `${d}/${m}/${y}`; };
+const key = (y,m,d) => `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ─── RENDER PAGE ───
+function setLang(l){
+  lang = l; document.documentElement.lang = l==='pt'?'pt-BR':l;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.l===l));
+  document.querySelectorAll('[data-t]').forEach(el=>{ const v=t()[el.dataset.t]; if(typeof v==='string') el.textContent=v; });
+  document.querySelectorAll('[data-th]').forEach(el=>{ el.innerHTML = t()[el.dataset.th]; });
+  document.querySelectorAll('[data-wa]').forEach(el=>{
+    const k = el.dataset.wa; el.href = waLink(['ret','hello'].includes(k)?WA_CASA:WA_SPA, t().wa[k]);
+  });
+  renderServices(); renderStays(); renderPillars(); renderRitual();
+  if (panelType) renderPanel();
+  try{ localStorage.setItem('fadas-lang', l) }catch(e){}
+}
+function renderServices(){
+  $('#svc-grid').innerHTML = t().services.map((s,i)=>`
+    <article class="svc rv in">
+      <div class="svc-img"><img src="${s.img.replace('w=600','w=1000')}" alt="${s.name}" loading="lazy" onerror="this.remove()"></div>
+      <div class="svc-body">
+        <div class="svc-top"><h3>${s.name}</h3><span class="price">${s.price}</span></div>
+        <div class="meta">${s.dur}</div>
+        <p>${s.desc.replace(/<[^>]+>/g,' ').trim().split(/(?<=\.)\s/)[0]}</p>
+        <div class="tags">${s.benefits.map(b=>`<span class="tag">${b}</span>`).join('')}</div>
+        <button class="btn btn-dark" onclick="openPanel('spa',${i})">${t().bookThis} <span class="ar">→</span></button>
+      </div>
+    </article>`).join('');
+}
+function renderStays(){
+  $('#stays').innerHTML = t().rooms.map((r,i)=>`
+    <article class="stay">
+      <div class="stay-img"><img src="${r.img.replace('w=600','w=900')}" alt="${r.name}" loading="lazy" onerror="this.remove()">
+        <div class="stay-price"><b>${r.price}</b> ${r.unit}</div></div>
+      <div class="row"><h4>${r.name}</h4><button class="txt-link" onclick="openPanel('casa',${i})">${t().reserve}</button></div>
+      <div class="tags">${r.ams.map(a=>`<span class="tag">${a}</span>`).join('')}</div>
+    </article>`).join('');
+}
+function renderPillars(){
+  $('#pillars').innerHTML = t().pillars.map((p,i)=>`<div class="pillar">${PILLAR_ICONS[i]}<h4>${p[0]}</h4><p>${p[1]}</p></div>`).join('');
+}
+function renderRitual(){
+  $('#ritual').innerHTML = t().ritual.map(r=>`<li><b>${r[0]}</b><span>${r[1]}</span></li>`).join('');
+}
+function slide(d){ const el=$('#stays'); el.scrollBy({left:d*el.firstElementChild.offsetWidth*1.05,behavior:'smooth'}); }
+
+// ─── BOOKING DRAWER ───
+function openPanel(type, preset){
+  if (panelType !== type) step = 1;
+  panelType = type;
+  if (type==='spa' && preset!==undefined){ B.svc=preset; step=2; }
+  if (type==='casa' && preset!==undefined){ B.room=preset; step=2; }
+  document.body.classList.remove('menu');
+  renderPanel();
+  $('#ov').classList.add('open'); document.body.style.overflow='hidden';
+}
+function closePanel(){ $('#ov').classList.remove('open'); document.body.style.overflow=''; }
+function go(n){ saveForm(); step=n; renderPanel(); $('#dr-body').scrollTop=0; }
+function saveForm(){ ['name','phone','email','notes'].forEach(f=>{ const el=$('#f-'+f); if(el) B[f]=el.value; }); }
+
+function renderPanel(){
+  const T_ = t(), spa = panelType==='spa';
+  $('#dr-title').textContent = spa ? T_.spaBookTitle : T_.casaBookTitle;
+  const bars = step<5 ? `<div class="steps">${[1,2,3,4].map(i=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div>` : '';
+  let body='', back='', next='';
+  if (step===1){
+    body = `<div class="st-lbl">${spa?T_.stepSvc:T_.stepRoom}</div><h3 class="st-title">${spa?T_.spaT1:T_.casaT1}</h3><div class="opts">` +
+      (spa ? T_.services.map((s,i)=>`<button class="opt${B.svc===i?' sel':''}" onclick="B.svc=${i};renderPanel()"><img src="${s.img}" alt=""><div class="opt-b"><div class="opt-n">${s.name}</div><div class="opt-d">${s.dur}</div></div><div class="opt-p">${s.price}</div></button>`).join('')
+           : T_.rooms.map((r,i)=>`<button class="opt${B.room===i?' sel':''}" onclick="B.room=${i};renderPanel()"><img src="${r.img}" alt=""><div class="opt-b"><div class="opt-n">${r.name}</div><div class="opt-d">${r.ams.slice(0,3).join(' · ')}</div></div><div class="opt-p">${r.price}<small>${r.unit}</small></div></button>`).join('')) + '</div>';
+    next = `<button class="btn btn-dark" onclick="go(2)" ${(spa?B.svc:B.room)===null?'disabled':''}>${T_.cont} →</button>`;
+  }
+  if (step===2){
+    if (spa){
+      body = `<div class="st-lbl">${T_.stepDT}</div><h3 class="st-title">${T_.spaT2}</h3>${calHTML()}<div class="st-lbl">${T_.stepTime}</div>` +
+        (B.date ? `<div class="times">${spaTimes.map(h=>`<button class="tb${B.time===h?' sel':''}" ${spaOff.includes(h)?'disabled':''} onclick="B.time='${h}';renderPanel()">${h}</button>`).join('')}</div>` : `<p class="hint" style="margin-top:4px">${T_.pickDate}</p>`);
+      next = `<button class="btn btn-dark" onclick="go(3)" ${!(B.date&&B.time)?'disabled':''}>${T_.cont} →</button>`;
+    } else {
+      body = `<div class="st-lbl">${T_.stepDates}</div><h3 class="st-title">${T_.casaT2}</h3>
+        <p class="hint">${T_.lCheckin}: <b>${fmt(B.cin)}</b> &nbsp;·&nbsp; ${T_.lCheckout}: <b>${fmt(B.cout)}</b></p>${calHTML()}
+        <div class="st-lbl" style="margin-top:6px">${T_.stepGuests}</div>
+        <div class="guest"><div>${T_.adults}</div><div class="gc"><button onclick="B.adults=Math.max(1,B.adults-1);renderPanel()">−</button><b>${B.adults}</b><button onclick="B.adults++;renderPanel()">+</button></div></div>
+        <div class="guest"><div>${T_.children}<small>${T_.childAge}</small></div><div class="gc"><button onclick="B.children=Math.max(0,B.children-1);renderPanel()">−</button><b>${B.children}</b><button onclick="B.children++;renderPanel()">+</button></div></div>`;
+      next = `<button class="btn btn-dark" onclick="go(3)" ${!(B.cin&&B.cout)?'disabled':''}>${T_.cont} →</button>`;
+    }
+    back = `<button class="btn btn-line" onclick="go(1)">← ${T_.back}</button>`;
+  }
+  if (step===3){
+    body = `<div class="st-lbl">${T_.stepInfo}</div><h3 class="st-title">${spa?T_.spaT3:T_.casaT3}</h3>
+      <div class="fg"><label>${T_.fName}</label><input id="f-name" value="${esc(B.name)}" autocomplete="name" oninput="chk()"></div>
+      <div class="fg"><label>WhatsApp</label><input id="f-phone" value="${esc(B.phone)}" type="tel" autocomplete="tel" placeholder="+55 48 9…" oninput="chk()"></div>
+      <div class="fg"><label>${T_.email}</label><input id="f-email" value="${esc(B.email)}" type="email" autocomplete="email"></div>
+      <div class="fg"><label>${spa?T_.fNotes:T_.fSpecial}</label><textarea id="f-notes">${esc(B.notes)}</textarea></div>`;
+    back = `<button class="btn btn-line" onclick="go(2)">← ${T_.back}</button>`;
+    next = `<button class="btn btn-dark" id="n3" onclick="go(4)" ${!(B.name.trim()&&B.phone.trim())?'disabled':''}>${T_.rev} →</button>`;
+  }
+  if (step===4){
+    body = `<div class="st-lbl">${T_.stepSum}</div><h3 class="st-title">${spa?T_.spaT4:T_.casaT4}</h3><div class="sum">${summary().map(([a,b])=>`<div><span>${a}</span><b>${esc(String(b))}</b></div>`).join('')}
+      <div class="tot"><span>${spa?T_.lTotal:T_.lTotalEst}</span><b>${total()}</b></div></div><p class="note">${T_.priceNote}</p>`;
+    back = `<button class="btn btn-line" onclick="go(3)">← ${T_.back}</button>`;
+    next = `<a class="btn btn-gold" href="${bookingLink()}" target="_blank" rel="noopener" onclick="setTimeout(()=>go(5),60)">${T_.waSend} →</a>`;
+  }
+  if (step===5){
+    body = `<div class="ok"><div class="glyph">✳</div><h3 class="st-title">${T_.okTitle}</h3><p>${T_.okSub}</p>
+      <a class="btn btn-dark" href="${bookingLink()}" target="_blank" rel="noopener">${T_.okAgain}</a></div>`;
+    next = `<button class="btn btn-line" onclick="reset()">${spa?T_.newB:T_.newR}</button>`;
+  }
+  $('#dr-body').innerHTML = bars + body;
+  $('#dr-foot').innerHTML = (back||'<span></span>') + next;
+}
+function chk(){ saveForm(); const b=$('#n3'); if(b) b.disabled=!(B.name.trim()&&B.phone.trim()); }
+
+function calHTML(){
+  const T_=t(), first=new Date(calY,calM,1).getDay(), dn=new Date(calY,calM+1,0).getDate();
+  let h = `<div class="cal"><div class="cal-nav"><button onclick="mnav(-1)" aria-label="‹">‹</button><span>${T_.months[calM]} ${calY}</span><button onclick="mnav(1)" aria-label="›">›</button></div><div class="cal-g">` +
+    T_.days.map(d=>`<div class="cal-h">${d[0]}</div>`).join('') + '<div></div>'.repeat(first);
+  for (let d=1; d<=dn; d++){
+    const dt=new Date(calY,calM,d), k=key(calY,calM,d);
+    let dis = dt<today, cls='';
+    if (panelType==='spa'){ if(B.date===k) cls='sel'; }
+    else {
+      if (k===B.cin||k===B.cout) cls='sel'; else if (B.cin&&B.cout&&k>B.cin&&k<B.cout) cls='rng';
+    }
+    if (+dt===+today) cls+=' today';
+    h += `<button class="cd ${cls}" ${dis?'disabled':''} onclick="pick('${k}')">${d}</button>`;
+  }
+  return h + '</div></div>';
+}
+function mnav(d){ calM+=d; if(calM>11){calM=0;calY++} if(calM<0){calM=11;calY--} renderPanel(); }
+function pick(k){
+  if (panelType==='spa'){ B.date=k; B.time=null; }
+  else if (!B.cin || B.cout || k<=B.cin){ B.cin=k; B.cout=null; }
+  else B.cout=k;
+  renderPanel();
+}
+function nights(){ if(!B.cin||!B.cout) return 0; const a=B.cin.split('-').map(Number), b=B.cout.split('-').map(Number); return Math.round((new Date(b[0],b[1]-1,b[2])-new Date(a[0],a[1]-1,a[2]))/864e5); }
+function total(){
+  const T_=t();
+  if (panelType==='spa') return T_.services[B.svc].price;
+  const r=T_.rooms[B.room], unit=parseInt(r.price.replace(/\D/g,'')), perPerson=/pessoa|person|persona/.test(r.unit);
+  return 'R$ ' + (unit*nights()*(perPerson?B.adults+B.children:1)).toLocaleString('pt-BR');
+}
+function summary(){
+  const T_=t();
+  const who=[[T_.lName,B.name],[T_.lPhone,B.phone]];
+  if (panelType==='spa') return [[T_.lSvc,T_.services[B.svc].name],[T_.lDate,fmt(B.date)],[T_.lTime,B.time],...who];
+  return [[T_.lRoom,T_.rooms[B.room].name],[T_.lCheckin,fmt(B.cin)],[T_.lCheckout,fmt(B.cout)],[T_.lNights,nights()],[T_.lGuests,`${B.adults} ${T_.adults}${B.children?` · ${B.children} ${T_.children}`:''}`],...who];
+}
+function bookingLink(){
+  const T_=t(), lines=summary().map(([a,b])=>`• ${a}: ${b}`);
+  lines.push(`• ${panelType==='spa'?T_.lTotal:T_.lTotalEst}: ${total()}`);
+  if (B.email) lines.push(`• E-mail: ${B.email}`);
+  if (B.notes) lines.push(`• ${panelType==='spa'?T_.fNotes:T_.fSpecial}: ${B.notes}`);
+  return waLink(panelType==='spa'?WA_SPA:WA_CASA, `${T_.wa[panelType]}\n${lines.join('\n')}`);
+}
+function reset(){ Object.assign(B,{svc:null,date:null,time:null,room:null,cin:null,cout:null,adults:2,children:0,notes:''}); step=1; renderPanel(); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePanel(); });
+
+// ─── INIT ───
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu')));
+const nav=$('#nav'); const onScroll=()=>nav.classList.toggle('solid',scrollY>30); addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#yr').textContent = now.getFullYear();
+let saved='pt'; try{ saved=localStorage.getItem('fadas-lang')||'pt' }catch(e){}
+setLang(['pt','en','es'].includes(saved)?saved:'pt');
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
